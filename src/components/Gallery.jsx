@@ -6,6 +6,7 @@ function Carousel() {
   return (
     <div>
       <h2>Carousel</h2>
+      <p> I hold the tiles</p>
       <Tile />
       <Tile />
       <Tile />
