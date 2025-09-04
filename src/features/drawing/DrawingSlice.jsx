@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 export const drawingSlice = createSlice({
     name: 'drawing',
-    initialState: {},
+    initialState: { enabled: true, color: '#000000', size: 6, strokes: [] },
     reducers: {
         setDrawing: (state, action) => {
             return action.payload;
