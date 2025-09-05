@@ -3,8 +3,11 @@ import Tile from './Tile'
 
 
 function Carousel() {
+  const outline = {
+    border: '2px solid yellow',
+  }
   return (
-    <div>
+    <div style={outline}>
       <h2>Gallery!</h2>
       <p> I hold the tiles</p>
       <Tile />

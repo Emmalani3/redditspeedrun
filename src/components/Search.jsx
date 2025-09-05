@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 
 function Search() {
+  const outline = { 
+    border: '2px solid aqua',
+  }
   const [searchParam, setSearchParam] = useState('');
 
   const handleSubmit = (event) => {
@@ -9,7 +12,7 @@ function Search() {
   };
 
   return (
-    <div>
+    <div style={outline}>
       <form onSubmit={handleSubmit}>
         <input 
           type="text" 

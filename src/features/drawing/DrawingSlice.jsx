@@ -6,7 +6,23 @@ export const drawingSlice = createSlice({
     reducers: {
         setDrawing: (state, action) => {
             return action.payload;
-        },  
+        }, 
+        setColor(state, action) {
+            state.color = action.payload;
+        },
+        setSize(state, action) {
+            state.size = action.payload;
+        },
+        startStroke(state, action) {
+            const { x, y } = action.payload;
+            state.isDrawing = true;
+            state.redoStack = []; // new action invalidates redo
+            state.strokes.push({
+                color: state.color,
+                size: state.size,
+                points: [{ x, y }]
+            });
+        }, 
         clearDrawing: (state) => {
             return {};
         }
