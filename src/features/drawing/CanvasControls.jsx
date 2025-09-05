@@ -22,7 +22,7 @@ export default function DrawingToolbar() {
         <input
           type="range"
           min="1"
-          max="32"
+          max="64"
           value={size}
           onChange={(e) => dispatch(setSize(Number(e.target.value)))}
         />
