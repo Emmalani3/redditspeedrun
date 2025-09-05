@@ -6,7 +6,7 @@ function DrawingArea() {
   }
   const svg = {
     width:'90%',
-    height: '500',
+    height: '400',
     backgroundColor:'white'
   }
   const [x, setX] = useState(0)

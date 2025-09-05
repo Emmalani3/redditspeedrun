@@ -12,8 +12,8 @@ function Search() {
   };
 
   return (
-    <div style={outline}>
-      <form onSubmit={handleSubmit}>
+    <>
+      <form style={outline} onSubmit={handleSubmit}>
         <input 
           type="text" 
           value={searchParam} 
@@ -21,7 +21,7 @@ function Search() {
         />
         <button type="submit">Search</button>
       </form>
-    </div>
+    </>
   );
 }
 
