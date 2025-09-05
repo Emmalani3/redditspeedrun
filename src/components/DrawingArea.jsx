@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { startStroke, addPoint, endStroke } from "../features/drawing/DrawingSlice.js";
 
 
-export default function DrawingCanvas() {
-  const canvasRef = useRef(null);
+export default function DrawingCanvas({canvasRef}) {
+  //const canvasRef = useRef(null);
   const dispatch = useDispatch();
   const { strokes } = useSelector((s) => s.drawing);
 
@@ -15,6 +15,7 @@ export default function DrawingCanvas() {
     const dpr = window.devicePixelRatio || 1;
     canvas.width = clientWidth * dpr;
     canvas.height = clientHeight * dpr;
+    ctx.setTransform(1, 0, 0, 1, 0, 0); 
     ctx.scale(dpr, dpr);
   }, []);
 
