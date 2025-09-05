@@ -1,9 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react';
 
 function Search() {
+  const outline = { 
+    border: '2px solid aqua',
+  }
+  const [searchParam, setSearchParam] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault(); // stop page reload
+    console.log(searchParam); // do something with searchParam
+  };
+
   return (
-    <div>Im the search bar</div>
-  )
+    <>
+      <form style={outline} onSubmit={handleSubmit}>
+        <input 
+          type="text" 
+          value={searchParam} 
+          onChange={(e) => setSearchParam(e.target.value)} 
+        />
+        <button type="submit">Search</button>
+      </form>
+    </>
+  );
 }
 
-export default Search
+export default Search;
