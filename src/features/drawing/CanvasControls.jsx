@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setColor, setSize, undo, redo, clear } from "../features/DrawingSlice";
+import { setColor, setSize, undo, redo, clear } from "./DrawingSlice.js";
 
 export default function DrawingToolbar() {
   const dispatch = useDispatch();

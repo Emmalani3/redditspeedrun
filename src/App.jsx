@@ -7,7 +7,8 @@ import Timer from './components/Timer'
 import Header from './components/Header'
 import DrawingArea from './components/DrawingArea'
 import Gallery from './components/Gallery'
-import { store } from './store'
+import { store } from './store.js'
+import CanvasControls from './features/drawing/CanvasControls'
 
 function App() {
   const page = {
@@ -33,6 +34,7 @@ function App() {
           </div>
           <div >
             <DrawingArea />
+            <CanvasControls />
           </div>
         </div>
       </Provider>
