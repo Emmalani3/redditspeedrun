@@ -26,12 +26,15 @@ export default function DrawingCanvas({canvasRef}) {
     ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
 
     strokes.forEach((stroke) => {
-      const { color, size, points } = stroke;
+      const { color, size, points, blur=0, transparency=1 } = stroke;
       if (points.length < 2) return;
+      ctx.save();
       ctx.lineJoin = "round";
       ctx.lineCap = "round";
       ctx.strokeStyle = color;
       ctx.lineWidth = size;
+      ctx.globalAlpha = transparency;                         // 0.0 - 1.0
+      ctx.filter = blur > 0 ? `blur(${blur}px)` : "none";
 
       ctx.beginPath();
       ctx.moveTo(points[0].x, points[0].y);
@@ -40,7 +43,7 @@ export default function DrawingCanvas({canvasRef}) {
       }
       ctx.stroke();
     });
-  }, [strokes]);
+  }, [strokes, canvasRef]);
 
   useEffect(() => {
     const canvas = canvasRef.current;

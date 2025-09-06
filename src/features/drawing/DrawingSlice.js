@@ -6,6 +6,8 @@ export const drawingSlice = createSlice({
         isDrawing: true, 
         color: '#000000', 
         size: 6, 
+        blur: 0,
+        transparency: 1,
         strokes: [],
         redoStack: [],
     },
@@ -16,6 +18,12 @@ export const drawingSlice = createSlice({
         setSize(state, action) {
             state.size = action.payload;
         },
+        setBlur(state, action) {
+            state.blur = action.payload;
+        },
+        setTransparency(state, action) {
+            state.transparency = action.payload;
+        },
         startStroke(state, action) {
             const { x, y } = action.payload;
             state.isDrawing = true;
@@ -23,6 +31,8 @@ export const drawingSlice = createSlice({
             state.strokes.push({
                 color: state.color,
                 size: state.size,
+                blur: state.blur,                    // ✅ store blur per-stroke
+                transparency: state.transparency,
                 points: [{ x, y }]
             });
         }, 
@@ -54,6 +64,8 @@ export const drawingSlice = createSlice({
 
 export const { setColor,
   setSize,
+  setBlur,
+  setTransparency,
   startStroke,
   addPoint,
   endStroke,
