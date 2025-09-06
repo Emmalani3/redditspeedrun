@@ -3,6 +3,7 @@ import { Provider } from 'react-redux'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+//import './styles/styles.css'
 import Timer from './components/Timer'
 import Header from './components/Header'
 import DrawingArea from './components/DrawingArea'
@@ -19,11 +20,7 @@ function App() {
     gridTemplateColumns: '1fr 2fr',
     columnGap: '20px',
   }
-  const outline = {
-    border:'2px solid hotPink',
-    padding: '10px',
-    margin: '10px'
-  }
+  
   return (
     <>
       <Provider store={store}>
@@ -38,7 +35,6 @@ function App() {
             <DrawingArea canvasRef={canvasRef}/>
             <CanvasControls />
             <DomCapture canvasRef={canvasRef} defaultFilename="my-drawing"/>
-            <Timer />
           </div>
         </div>
       </Provider>

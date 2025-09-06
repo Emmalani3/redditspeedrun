@@ -103,7 +103,7 @@ export default function DrawingCanvas({canvasRef}) {
         borderRadius: 12,
         overflow: "hidden",
         width: "100%",
-        height: 400,
+        height: "80%",
         touchAction: "none"
       }}
     >

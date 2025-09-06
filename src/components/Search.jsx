@@ -13,7 +13,7 @@ export default function Search() {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ border: '2px solid aqua' }}>
+    <form onSubmit={handleSubmit}>
       <input
         type="text"
         value={searchParam}

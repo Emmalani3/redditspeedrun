@@ -16,10 +16,9 @@ export const fetchArtResults = createAsyncThunk(
       // Serve from cache
       return { keyword: k, items: reddit.itemsByQuery[k] };
     }
-
-    const url = `https://www.reddit.com/r/art/search.json?restrict_sr=1&sort=relevance&q=${encodeURIComponent(
-      k
-    )}&limit=50`;
+    
+    const url = `/reddit/r/art/search.json?restrict_sr=1&sort=relevance&q=${encodeURIComponent(k)}&limit=50&raw_json=1`;
+    //const url = `https://www.reddit.com/r/art/search.json?restrict_sr=1&sort=relevance&q=${encodeURIComponent(k)}&limit=50`;
 
     const res = await fetch(url, { headers: { Accept: 'application/json' } });
     if (!res.ok) {
