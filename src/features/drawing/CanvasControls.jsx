@@ -33,7 +33,7 @@ export default function DrawingToolbar() {
         Blur{" "}
         <input
           type="range"
-          min="1"
+          min="0"
           max="64"
           value={blur}
           onChange={(e) => dispatch(setBlur(Number(e.target.value)))}
