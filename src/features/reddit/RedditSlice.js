@@ -17,9 +17,19 @@ export const fetchArtResults = createAsyncThunk(
       return { keyword: k, items: reddit.itemsByQuery[k] };
     }
     
-    const url = `/reddit/r/art/search.json?restrict_sr=1&sort=relevance&q=${encodeURIComponent(k)}&limit=50&raw_json=1`;
+    //const url = `/reddit/r/art/search.json?restrict_sr=1&sort=relevance&q=${encodeURIComponent(k)}&limit=50&raw_json=1`;
     //const url = `https://www.reddit.com/r/art/search.json?restrict_sr=1&sort=relevance&q=${encodeURIComponent(k)}&limit=50`;
+    // ✅ Build an absolute URL so it does NOT resolve relative to GitHub Pages
+    const url = new URL('https://www.reddit.com/r/art/search.json');
+    url.search = new URLSearchParams({
+      restrict_sr: '1',
+      sort: 'relevance',
+      q: k,
+      limit: '50',
+      raw_json: '1',
+    }).toString();
 
+    
     const res = await fetch(url, { headers: { Accept: 'application/json' } });
     if (!res.ok) {
       // Reddit may rate limit with 429; surface a helpful error
