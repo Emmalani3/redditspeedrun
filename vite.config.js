@@ -3,7 +3,9 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  
+base: 'redditspeedrun',  //←Only if deploying to github not on netlify!
+plugins: [react()],
   server: {
     proxy: {
       '/reddit': {
@@ -14,3 +16,4 @@ export default defineConfig({
     },
   },
 })
+
