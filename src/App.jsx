@@ -30,15 +30,15 @@ function App() {
         <div>
           <Header />
         </div>
-        <div style={page}>
-            <div>
+        <div className='main' style={page}>
+            <div  className="left-col">
             <Gallery />
-            <Timer />
           </div>
-          <div >
+          <div className="right-col">
             <DrawingArea canvasRef={canvasRef}/>
             <CanvasControls />
             <DomCapture canvasRef={canvasRef} defaultFilename="my-drawing"/>
+            <Timer />
           </div>
         </div>
       </Provider>

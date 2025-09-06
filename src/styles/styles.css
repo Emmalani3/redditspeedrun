@@ -1,32 +1,48 @@
 
 
 .header {
-    background-color: #213547;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    top: 0;
-    right: 0;
-    display: block;
-    position: fixed;
-    z-index: 1000;
-    border: 2px solid black;
-    height: 170px
+  position: fixed;
+  top: 0;
+  left: 0;          /* was right:0; left makes more sense for full-width */
+  width: 100%;
+  height: 170px;    /* fixed height used by main calc() */
+  z-index: 1000;
+  background-color: #213547;
+  border: 2px solid black;
+
+  /* Remove extra internal spacing and align content */
+  display: flex;
+  align-items: center;   /* vertically center header contents */
+  justify-content: space-between; /* tweak to taste */
+  gap: 0.5rem;           /* control spacing between items */
+  padding: 0 12px;       /* small horizontal breathing room */
+  line-height: 1;        /* tighter vertical rhythm */
+}
+.header h1,
+.header h2,
+.header p,
+.header img,
+.header button {
+  margin: 0;
+}
+.left-col {
+  min-width: 0;     /* important so child content can shrink/scroll */
+  overflow: auto;
+}
+.right-col {
+  min-width: 0;
+  overflow: auto;   /* let tools on the right scroll inside the column if needed */
 }
 
-body {
-     padding-top: 100px;
-     width:100%; 
-     height:100%;
-     align-items: center;
-     border: 5px solid aqua;
-}
 /* Gallery.css or App.css */
 .gallery {
   display: flex;
   flex-direction: column; /* stack vertically */
   gap: 16px;              /* space between images */
   width: 100%;            /* take full column width */
+  height: 100%;
+  overflow: auto;
+
 }
 
 .tile {
