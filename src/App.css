@@ -69,7 +69,7 @@
 
 /* Each image only takes up 30% of gallery’s height */
 .tile img {
-  max-height: 30%;        /* image never taller than 30% of gallery height */
+  max-height: 100%;        /* image never taller than 30% of gallery height */
   max-width: 100%;        /* scale horizontally if needed */
   object-fit: contain;
   display: block;
