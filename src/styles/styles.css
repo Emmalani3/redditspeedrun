@@ -36,27 +36,29 @@
 
 /* Gallery.css or App.css */
 .gallery {
+  height: 100%;           /* full height of its column */
   display: flex;
-  flex-direction: column; /* stack vertically */
-  gap: 16px;              /* space between images */
-  width: 100%;            /* take full column width */
-  height: 100%;
-  overflow: auto;
-
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 8px;
+  box-sizing: border-box;
 }
 
+/* Tile takes space but image is restricted */
 .tile {
-  display: block;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 8px;
   overflow: hidden;
-  justify-content: center;
 }
 
+/* Each image only takes up 30% of gallery’s height */
 .tile img {
-  width: 50%;
-  height: auto;  /* preserve image aspect ratio */
+  max-height: 30%;        /* image never taller than 30% of gallery height */
+  max-width: 100%;        /* scale horizontally if needed */
+  object-fit: contain;
   display: block;
-  object-fit: contain; /* makes sure images scale nicely inside the box */
-  margin-left: auto;
-  margin-right: auto; /* centers block-level elements */
 }
