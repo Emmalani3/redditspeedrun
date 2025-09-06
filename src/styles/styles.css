@@ -21,3 +21,26 @@ body {
      align-items: center;
      border: 5px solid aqua;
 }
+/* Gallery.css or App.css */
+.gallery {
+  display: flex;
+  flex-direction: column; /* stack vertically */
+  gap: 16px;              /* space between images */
+  width: 100%;            /* take full column width */
+}
+
+.tile {
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.tile img {
+  width: 50%;
+  height: auto;  /* preserve image aspect ratio */
+  display: block;
+  object-fit: contain; /* makes sure images scale nicely inside the box */
+  margin-left: auto;
+  margin-right: auto; /* centers block-level elements */
+}

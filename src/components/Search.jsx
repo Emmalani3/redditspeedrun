@@ -1,28 +1,25 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchArtResults } from '../features/reddit/RedditSlice.js';
 
-function Search() {
-  const outline = { 
-    border: '2px solid aqua',
-  }
+export default function Search() {
+  const dispatch = useDispatch();
   const [searchParam, setSearchParam] = useState('');
 
-  const handleSubmit = (event) => {
-    event.preventDefault(); // stop page reload
-    console.log(searchParam); // do something with searchParam
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!searchParam.trim()) return;
+    dispatch(fetchArtResults(searchParam.trim()));
   };
 
   return (
-    <>
-      <form style={outline} onSubmit={handleSubmit}>
-        <input 
-          type="text" 
-          value={searchParam} 
-          onChange={(e) => setSearchParam(e.target.value)} 
-        />
-        <button type="submit">Search</button>
-      </form>
-    </>
+    <form onSubmit={handleSubmit} style={{ border: '2px solid aqua' }}>
+      <input
+        type="text"
+        value={searchParam}
+        onChange={(e) => setSearchParam(e.target.value)}
+      />
+      <button type="submit">Search</button>
+    </form>
   );
 }
-
-export default Search;
