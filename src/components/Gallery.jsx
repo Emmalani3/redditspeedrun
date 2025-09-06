@@ -6,7 +6,7 @@ import {
   selectLastQuery,
   selectResultsForQuery
 } from '../features/reddit/RedditSlice.js';
-import '../styles/styles.css';
+import '../App.css';
 
 export default function Gallery() {
   const status = useSelector(selectRedditStatus);

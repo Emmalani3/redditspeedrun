@@ -8,14 +8,12 @@
 .header {
   position: fixed;
   top: 0;
-  left: 0;          /* was right:0; left makes more sense for full-width */
+          /* was right:0; left makes more sense for full-width */
   width: 100%;
   height: 100px;    /* fixed height used by main calc() */
-  z-index: -1;
+  z-index: 10;
   background-color: #213547;
-  
-
-  /* Remove extra internal spacing and align content */
+    /* Remove extra internal spacing and align content */
   display: flexbox;
   align-items: center;   /* vertically center header contents */
   justify-content: space-between; /* tweak to taste */
@@ -25,7 +23,7 @@
 }
 .main {
   /* Put the main *below* the header */
-  margin-top: 170px;                   /* exactly the header height */
+  margin-top: 110px;                   /* exactly the header height */
   height: calc(100vh - 110px);         /* fill the rest of the viewport */
   overflow: hidden;                    /* no page scroll beyond viewport */
 
@@ -45,7 +43,7 @@
 }
 .right-col {
   min-width: 0;
-  overflow: auto;   /* let tools on the right scroll inside the column if needed */
+  overflow: clip;   /* let tools on the right scroll inside the column if needed */
 }
 
 /* Gallery.css or App.css */
