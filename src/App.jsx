@@ -11,7 +11,9 @@ import DomCapture from './features/screencapture/DomCapture.jsx'
 
 function App() {
  
-  
+ // create a single canvas ref for the drawing area & tools
+  const canvasRef = useRef(null);
+   
  
   return (
     <>
