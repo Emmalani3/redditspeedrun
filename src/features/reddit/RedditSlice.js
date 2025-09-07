@@ -1,9 +1,15 @@
 // src/features/reddit/RedditSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { redditFetch, getRedditToken } from './cors';
+
+// helper for fixing &amp; in Reddit preview URLs
+function decodeEntities(s = '') {
+  return s.replace(/&amp;/g, '&');
+}
+
 /**
- * Thunk: search r/art for a keyword and return 3 random image posts.
- * We also cache results per keyword to reduce API calls / rate-limit hits.
+ * Thunk: search r/art for a keyword and return image posts.
+ * Caches results per keyword.
  */
 export const fetchArtResults = createAsyncThunk(
   'reddit/fetchArtResults',
@@ -16,88 +22,50 @@ export const fetchArtResults = createAsyncThunk(
       // Serve from cache
       return { keyword: k, items: reddit.itemsByQuery[k] };
     }
+
     const token = getRedditToken();
     if (!token) {
       throw new Error('Please sign in with Reddit first to fetch results.');
     }
 
+    // OAuth host (CORS-friendly)
     const data = await redditFetch(
       `/r/art/search.json?restrict_sr=1&sort=relevance&q=${encodeURIComponent(k)}&limit=50&raw_json=1`
     );
-     const items = (data?.data?.children ?? [])
-      .map(({ data: d }) => ({
-        id: d.id,
-        title: d.title,
-        url: d.url_overridden_by_dest || d.url,
-        thumbnail:
-          d.thumbnail && d.thumbnail.startsWith('http') ? d.thumbnail : null,
-        permalink: `https://www.reddit.com${d.permalink}`,
-      }))
-      .filter(i => i.url && /\.(jpg|jpeg|png|gif|webp)$/i.test(i.url));
+
+    const items = (data?.data?.children ?? [])
+      .map(({ data: d }) => {
+        // Skip NSFW/spoilers (optional)
+        if (d?.over_18 || d?.spoiler) return null;
+
+        // Prefer preview source (usually higher-res), fall back to url/overridden
+        const preview = d?.preview?.images?.[0]?.source?.url || '';
+        const raw = preview || d?.url_overridden_by_dest || d?.url || '';
+        const imageUrl = decodeEntities(raw);
+
+        // Only keep direct image links
+        if (!/\.(jpg|jpeg|png|gif|webp)(\?.*)?$/i.test(imageUrl)) return null;
+
+        return {
+          id: d.id,
+          title: d.title,
+          imageUrl,                                        // what Gallery uses
+          postUrl: `https://www.reddit.com${d.permalink}`, // what Gallery uses
+        };
+      })
+      .filter(Boolean);
 
     return { keyword: k, items };
   }
 );
 
-    //const url = `/reddit/r/art/search.json?restrict_sr=1&sort=relevance&q=${encodeURIComponent(k)}&limit=50&raw_json=1`;
-    //const url = `https://www.reddit.com/r/art/search.json?restrict_sr=1&sort=relevance&q=${encodeURIComponent(k)}&limit=50`;
-    // ✅ Build an absolute URL so it does NOT resolve relative to GitHub Pages
-    //const url = new URL('https://www.reddit.com/r/art/search.json');
-    /*url.search = new URLSearchParams({
-      restrict_sr: '1',
-      sort: 'relevance',
-      q: k,
-      limit: '50',
-      raw_json: '1',
-    }).toString();
-
-    
-    const res = await fetch(url, { headers: { Accept: 'application/json' } });
-    if (!res.ok) {
-      // Reddit may rate limit with 429; surface a helpful error
-      const text = await res.text().catch(() => '');
-      throw new Error(`Reddit API ${res.status}: ${text || res.statusText}`);
-    }
-
-    const json = await res.json();
-    const children = json?.data?.children || [];
-
-    // Keep posts that actually have an image
-    const candidates = children
-      .map(c => c?.data)
-      .filter(d => d && !d.over_18 && !d.spoiler)
-      .filter(
-        d =>
-          d.post_hint === 'image' ||
-          (d.preview && d.preview.images && d.preview.images[0]?.source?.url)
-      )
-      .map(d => {
-        const raw =
-          d.preview?.images?.[0]?.source?.url || d.url_overridden_by_dest || '';
-        const imageUrl = raw.replace(/&amp;/g, '&'); // fix HTML entities
-        return {
-          id: d.id,
-          title: d.title,
-          imageUrl,
-          postUrl: `https://www.reddit.com${d.permalink}`,
-        };
-      });
-
-    // Pick 3 random unique items (or fewer if not enough)
-    const shuffled = [...candidates].sort(() => Math.random() - 0.5);
-    const three = shuffled.slice(0, 3);
-
-    return { keyword: k, items: three };
-  }
-);
-*/
 const redditSlice = createSlice({
   name: 'reddit',
   initialState: {
-    itemsByQuery: {},          // { [keyword]: Array<{id,title,imageUrl,postUrl}> }
-    status: 'idle',            // 'idle' | 'loading' | 'succeeded' | 'failed'
-    error: null,               // string | null
-    lastQuery: null,           // last searched keyword
+    itemsByQuery: {},   // { [keyword]: Array<{id,title,imageUrl,postUrl}> }
+    status: 'idle',     // 'idle' | 'loading' | 'succeeded' | 'failed'
+    error: null,
+    lastQuery: null,
   },
   reducers: {},
   extraReducers: builder => {
