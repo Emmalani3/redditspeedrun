@@ -51,4 +51,8 @@ button:focus-visible {
   h1 {
     font-size: 1.5em;
   }
+  :root {
+      background-color: green;
+
+  }
 }

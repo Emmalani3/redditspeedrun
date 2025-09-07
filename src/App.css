@@ -83,6 +83,7 @@
   object-fit: contain;
   display: block;
 }
+/*
 @media (max-width: 500px) {
   .header{
     height: 65px;
@@ -98,4 +99,61 @@
     flex-direction: row;
   }
 
+}*/
+@media screen and (max-width: 768px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 110px); /* full viewport below header */
+  }
+
+  .left-col {
+    flex: 1; /* 1 part of total flex (top third) */
+    height: 33%;
+    overflow: hidden;
+  }
+
+  .right-col {
+    flex: 2; /* 2 parts of total flex (bottom two thirds) */
+    height: 67%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Make gallery horizontal */
+  .gallery {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto; /* allow scrolling if many tiles */
+    height: 100%;
+  }
+
+  /* Adjust tiles so they don’t stretch vertically */
+  .tile {
+    flex: 0 0 auto; /* prevent squish/stretch */
+    width: auto;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tile img {
+    height: 80%;   /* scale images within gallery row */
+    width: auto;
+    object-fit: contain;
+  }
+
+  /* Drawing area fills top of right-col */
+  .drawingArea {
+    flex: 1;
+    width: 100%;
+    height: auto; /* flex handles height */
+  }
+
+  /* Controls sit beneath drawing area */
+  .right-col > *:not(.drawingArea) {
+    margin-top: 8px;
+  }
 }
