@@ -97,7 +97,7 @@ export default function DrawingArea({canvasRef}) {
   const onTouchEnd = () => dispatch(endStroke());
 
   return (
-    <div className={drawingArea}>
+    <div className="drawingArea">
       <canvas
         ref={canvasRef}
         style={{ width: "100%", height: "100%", display: "block", cursor: "crosshair", background: "#fff" }}
