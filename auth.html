@@ -1,0 +1,14 @@
+<!doctype html>
+    <meta charset="utf-8">
+    <script>
+    // After Reddit redirects back with:  #access_token=...&token_type=bearer&...
+    const hash = new URLSearchParams(location.hash.slice(1));
+    const token = hash.get('access_token');
+    if (token) {
+        localStorage.setItem('reddit_access_token', token);
+        // go back to your app
+        location.replace('/redditspeedrun/');
+    } else {
+        document.body.textContent = 'No token returned.';
+    }
+    </script>
