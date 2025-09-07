@@ -31,7 +31,7 @@
   column-gap: 20px;
   /* you already apply grid columns via inline style={page}; that’s fine */
 }
-@media only screen and (max-width: 500px) {
+@media screen and (max-width: 500px) {
   .header{
     height: 65px;
   }
