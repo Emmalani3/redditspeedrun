@@ -89,13 +89,10 @@
     background-color: black;
   }
   .main {
+    display: flexbox;
     margin-top: 70px;
-    grid-template-columns: 1fr;
-    column-gap: 0px;
-    grid-template-rows: 1fr 2fr;
-    row-gap: 10px;
     width: 100%;
-    background-color: blue;
+    background-color: greenyellow;
   }
   .gallery {
     flex-direction: row;
