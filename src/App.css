@@ -83,7 +83,7 @@
   object-fit: contain;
   display: block;
 }
-@media (min-width: 500px) {
+@media (max-width: 500px) {
   .header{
     height: 65px;
     background-color: black;
@@ -94,6 +94,8 @@
     column-gap: 0px;
     grid-template-rows: 1fr 2fr;
     row-gap: 10px;
+    width: 100%;
+    background-color: blue;
   }
   .gallery {
     flex-direction: row;
