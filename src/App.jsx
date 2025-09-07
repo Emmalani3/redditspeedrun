@@ -31,9 +31,9 @@ function App() {
             <CanvasControls />
             <DomCapture canvasRef={canvasRef} defaultFilename="my-drawing"/>
           </div>
-          <div>
-            <About />
-          </div>
+        </div>
+        <div>
+          <About />
         </div>
       </Provider>
     </>

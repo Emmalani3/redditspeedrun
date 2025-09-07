@@ -7,7 +7,7 @@ function About() {
             <h2>Support the Creator</h2>
             <img
                 class="headshot"
-                src="../../public/Head-Shot-2.jpg"
+                src="../assets/Head-Shot-2.jpg"
                 alt="Emma Lani — programming student"
             />
             <p class="sub">If you enjoy this project and want to help us build more you can donate to our Ko-Fi</p>
@@ -17,6 +17,7 @@ function About() {
                 Buy me a Ko‑fi
             </a>
         </section>
+
         <section id="contact">
             <h2>Commissions & Contact</h2>
             <p class="sub">Have an idea for a custom project or comments on this one? Send a note below and I'll get back to you.</p>
