@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { startStroke, addPoint, endStroke } from "../features/drawing/DrawingSlice.js";
 import '../App.css'
 
-export default function DrawingCanvas({canvasRef}) {
+export default function DrawingArea({canvasRef}) {
   //const canvasRef = useRef(null);
   const dispatch = useDispatch();
   const { strokes } = useSelector((s) => s.drawing);
