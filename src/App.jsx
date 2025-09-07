@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import { Provider } from 'react-redux'
 import './App.css'
+import './index.css'
 import Header from './components/Header'
 import DrawingArea from './components/DrawingArea'
 import Gallery from './components/Gallery'
