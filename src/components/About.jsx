@@ -11,9 +11,7 @@ function About() {
                 alt="Emma Lani — programming student"
             />
             <p class="sub">If you enjoy this project and want to help us build more you can donate to our Ko-Fi</p>
-            <div class="space"></div>
             <a class="kofi" href="https://ko-fi.com/emmalani" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M3 5a2 2 0 0 0-2 2v7a5 5 0 0 0 5 5h7a5 5 0 0 0 5-5v-1h1.5A3.5 3.5 0 0 0 23 9.5v-1A3.5 3.5 0 0 0 19.5 5H3zm17 8a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V7h16.5A1.5 1.5 0 0 1 21 8.5v1A1.5 1.5 0 0 1 19.5 11H20v2zM6.5 9C7.88 9 9 10.12 9 11.5S7.88 14 6.5 14 4 12.88 4 11.5 5.12 9 6.5 9z"/></svg>
                 Buy me a Ko‑fi
             </a>
         </section>
