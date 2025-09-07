@@ -8,6 +8,7 @@ import Gallery from './components/Gallery'
 import { store } from './store.js'
 import CanvasControls from './features/drawing/CanvasControls'
 import DomCapture from './features/screencapture/DomCapture.jsx'
+import About from './components/about.jsx'
 
 function App() {
  
@@ -29,6 +30,9 @@ function App() {
             <DrawingArea canvasRef={canvasRef}/>
             <CanvasControls />
             <DomCapture canvasRef={canvasRef} defaultFilename="my-drawing"/>
+          </div>
+          <div>
+            <About />
           </div>
         </div>
       </Provider>
