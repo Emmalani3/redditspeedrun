@@ -11,12 +11,7 @@ import DomCapture from './features/screencapture/DomCapture.jsx'
 function App() {
   const canvasRef = useRef(null); 
   
-  const page = {
-    display: 'grid',
-    gridTemplateColumns: '1fr 2fr',
-    columnGap: '20px',
-  }
-  
+ 
   return (
     <>
       <Provider store={store}>
