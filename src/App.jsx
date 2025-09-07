@@ -10,7 +10,7 @@ import CanvasControls from './features/drawing/CanvasControls'
 import DomCapture from './features/screencapture/DomCapture.jsx'
 
 function App() {
-  const canvasRef = useRef(null); 
+ 
   
  
   return (
@@ -20,7 +20,7 @@ function App() {
           <Header />
         </div>
         <div className='main'>
-            <div  className="left-col">
+            <div  className="left-col">  
             <Gallery />
           </div>
           <div className="right-col">

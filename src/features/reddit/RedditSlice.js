@@ -1,6 +1,6 @@
 // src/features/reddit/RedditSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-
+import { redditFetch, getRedditToken } from './cors';
 /**
  * Thunk: search r/art for a keyword and return 3 random image posts.
  * We also cache results per keyword to reduce API calls / rate-limit hits.
@@ -16,12 +16,34 @@ export const fetchArtResults = createAsyncThunk(
       // Serve from cache
       return { keyword: k, items: reddit.itemsByQuery[k] };
     }
-    
+    const token = getRedditToken();
+    if (!token) {
+      throw new Error('Please sign in with Reddit first to fetch results.');
+    }
+
+    const data = await redditFetch(
+      `/r/art/search.json?restrict_sr=1&sort=relevance&q=${encodeURIComponent(k)}&limit=50&raw_json=1`
+    );
+     const items = (data?.data?.children ?? [])
+      .map(({ data: d }) => ({
+        id: d.id,
+        title: d.title,
+        url: d.url_overridden_by_dest || d.url,
+        thumbnail:
+          d.thumbnail && d.thumbnail.startsWith('http') ? d.thumbnail : null,
+        permalink: `https://www.reddit.com${d.permalink}`,
+      }))
+      .filter(i => i.url && /\.(jpg|jpeg|png|gif|webp)$/i.test(i.url));
+
+    return { keyword: k, items };
+  }
+);
+
     //const url = `/reddit/r/art/search.json?restrict_sr=1&sort=relevance&q=${encodeURIComponent(k)}&limit=50&raw_json=1`;
     //const url = `https://www.reddit.com/r/art/search.json?restrict_sr=1&sort=relevance&q=${encodeURIComponent(k)}&limit=50`;
     // ✅ Build an absolute URL so it does NOT resolve relative to GitHub Pages
-    const url = new URL('https://www.reddit.com/r/art/search.json');
-    url.search = new URLSearchParams({
+    //const url = new URL('https://www.reddit.com/r/art/search.json');
+    /*url.search = new URLSearchParams({
       restrict_sr: '1',
       sort: 'relevance',
       q: k,
@@ -68,7 +90,7 @@ export const fetchArtResults = createAsyncThunk(
     return { keyword: k, items: three };
   }
 );
-
+*/
 const redditSlice = createSlice({
   name: 'reddit',
   initialState: {

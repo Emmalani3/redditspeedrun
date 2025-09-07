@@ -1,13 +1,20 @@
 import React from 'react'
 import Search from './Search'
 import '../App.css'
+import { loginToReddit } from '../reddit/signin'; 
 
 function Header() {
-  
+  const token = localStorage.getItem('reddit_access_token');
+
   return (
     <div className='header'>
         <h1>I Draw Reddit</h1>
-        <Search />
+        {!token ? (
+            <button onClick={loginToReddit}>Sign in with Reddit</button>
+        ) : (
+            <Search />
+        )}
+        
     </div>
   )
 }

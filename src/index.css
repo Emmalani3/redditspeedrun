@@ -48,9 +48,23 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+@media (max-width: 800px) {
+  h1 {
+    font-size: 1.5em;
+  }
+  button  {
+    padding: 0.5em 1em;
+    font-size: .9em;
+  }
+
+}
 @media (max-width: 500px) {
   h1 {
     font-size: 1.5em;
+  }
+  button  {
+    padding: 0.3em .5em;
+    font-size: .6em;
   }
   :root {
       background-color: green;
