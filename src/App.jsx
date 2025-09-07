@@ -19,7 +19,7 @@ function App() {
         <div>
           <Header />
         </div>
-        <div className='main' style={page}>
+        <div className='main'>
             <div  className="left-col">
             <Gallery />
           </div>
