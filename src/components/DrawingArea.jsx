@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { startStroke, addPoint, endStroke } from "../features/drawing/DrawingSlice.js";
-
+import '../App.css'
 
 export default function DrawingCanvas({canvasRef}) {
   //const canvasRef = useRef(null);
@@ -97,16 +97,7 @@ export default function DrawingCanvas({canvasRef}) {
   const onTouchEnd = () => dispatch(endStroke());
 
   return (
-    <div
-      style={{
-        border: "1px solid #ddd",
-        borderRadius: 12,
-        overflow: "hidden",
-        width: "100%",
-        height: "80%",
-        touchAction: "none"
-      }}
-    >
+    <div className={drawingArea}>
       <canvas
         ref={canvasRef}
         style={{ width: "100%", height: "100%", display: "block", cursor: "crosshair", background: "#fff" }}
