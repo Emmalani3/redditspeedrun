@@ -1,5 +1,6 @@
 import React from 'react'
 import headshot from '../assets/Head-Shot-2.jpg';
+import '../App.css'
 
 
 function About() {
