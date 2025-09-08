@@ -7,7 +7,7 @@ function Footer() {
   return (
     <div>
         <footer>
-        <small>© <span id="yr"></span>Built by: Emma Lani Bufalini</small>
+        <small>© <span id="yr">2024</span>Built by: Emma Lani Bufalini</small>
         </footer>
     </div>
   )
