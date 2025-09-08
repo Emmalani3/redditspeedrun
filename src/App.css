@@ -137,10 +137,14 @@
     height: 60px;
    
   }
-  .main {
+  .col {
     display: flex;
     flex-direction: column;
     height: calc(100vh - 60px); /* full viewport below header */
+  }
+  .col2 {
+    display: flex;
+    flex-direction: column;
   }
 
   .left-col {
