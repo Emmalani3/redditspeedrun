@@ -36,7 +36,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 20px;
-  /* you already apply grid columns via inline style={page}; that’s fine */
+  background-color: #213547;
 }
 
 

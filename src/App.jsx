@@ -9,6 +9,7 @@ import { store } from './store.js'
 import CanvasControls from './features/drawing/CanvasControls'
 import DomCapture from './features/screencapture/DomCapture.jsx'
 import About from './components/about.jsx'
+import Footer from './components/Footer.jsx'
 
 function App() {
  
@@ -34,6 +35,9 @@ function App() {
         </div>
         <div>
           <About />
+        </div>
+        <div>
+          <Footer />
         </div>
       </Provider>
     </>
