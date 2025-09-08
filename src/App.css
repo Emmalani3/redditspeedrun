@@ -21,16 +21,25 @@
   padding: 0 12px;       /* small horizontal breathing room */
   line-height: 1;        /* tighter vertical rhythm */
 }
-.main {
+.col{
   /* Put the main *below* the header */
   margin-top: 110px;                   /* exactly the header height */
   height: calc(100vh - 110px);         /* fill the rest of the viewport */
-  overflow: hidden;                    /* no page scroll beyond viewport */
+  overflow: auto;                    /* no page scroll beyond viewport */
   display: grid;
   grid-template-columns: 1fr 2fr;
   column-gap: 20px;
   /* you already apply grid columns via inline style={page}; that’s fine */
 }
+.col2{
+
+  overflow: hidden;                    /* no page scroll beyond viewport */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  /* you already apply grid columns via inline style={page}; that’s fine */
+}
+
 
 .header h1,
 .header h2,
@@ -83,23 +92,43 @@
   object-fit: contain;
   display: block;
 }
-/*
-@media (max-width: 500px) {
-  .header{
-    height: 65px;
-    background-color: black;
-  }
-  .main {
-    display: flexbox;
-    margin-top: 70px;
-    width: 100%;
-    background-color: greenyellow;
-  }
-  .gallery {
-    flex-direction: row;
-  }
+#support .headshot{
+  width: 220px;
+  height: 220px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 999px;       /* circle */
+  border: 4px solid #fff;     /* pops on the gradient */
+  box-shadow: var(--shadow);
+  display: block;
+  margin: 0 auto 12px;        /* centered above the text */
+}
 
-}*/
+/* contact */
+form{
+  display:grid;
+  gap:12px
+}
+
+input,textarea{
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:12px;
+  background:#fff;
+  box-shadow:inset 0 1px 0 rgba(0,0,0,.02);
+  width: 90%;
+}
+input:focus,textarea:focus{
+  outline:none;
+  box-shadow:0 0 0 6px rgba(0,0,0,.02);
+}
+button{
+  cursor:pointer;
+  border:0;
+  border-radius:14px;
+  padding:12px 16px;
+}
+
 @media screen and (max-width: 800px) {
   .header {
     height: 60px;
@@ -159,5 +188,9 @@
   /* Controls sit beneath drawing area */
   .right-col > *:not(.drawingArea) {
     margin-top: 8px;
+  }
+  #support .headshot{
+    width: 110px;
+    height: 110px;
   }
 }
