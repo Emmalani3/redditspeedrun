@@ -8,7 +8,7 @@ function Header() {
 
   return (
     <div className='header'>
-        <h1>I Draw Reddit</h1>
+        <h1>I <span style={{color: 'Red'}}>D</span><span style={{color: 'yellow'}}>R</span><span style={{color: 'blue'}}>A</span><span style={{color: 'green'}}>W</span> Reddit</h1>
         {!token ? (
             <button onClick={loginToReddit}>Sign in with Reddit to search for inspiration!</button>
         ) : (
