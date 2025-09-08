@@ -22,7 +22,7 @@ function App() {
         <div>
           <Header />
         </div>
-        <div className='main'>
+        <div className='col'>
             <div  className="left-col">  
             <Gallery />
           </div>

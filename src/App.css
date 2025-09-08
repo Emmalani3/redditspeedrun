@@ -25,14 +25,13 @@
   /* Put the main *below* the header */
   margin-top: 110px;                   /* exactly the header height */
   height: calc(100vh - 110px);         /* fill the rest of the viewport */
-  overflow: auto;                    /* no page scroll beyond viewport */
+  overflow: auto;               
   display: grid;
   grid-template-columns: 1fr 2fr;
   column-gap: 20px;
   /* you already apply grid columns via inline style={page}; that’s fine */
 }
 .col2{
-
   overflow: hidden;                    /* no page scroll beyond viewport */
   display: grid;
   grid-template-columns: 1fr 1fr;
