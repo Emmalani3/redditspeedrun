@@ -10,7 +10,7 @@ function Header() {
     <div className='header'>
         <h1>I Draw Reddit</h1>
         {!token ? (
-            <button onClick={loginToReddit}>Sign in with Reddit</button>
+            <button onClick={loginToReddit}>Sign in with Reddit to search for inspiration!</button>
         ) : (
             <Search />
         )}

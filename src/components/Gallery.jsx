@@ -14,9 +14,9 @@ export default function Gallery() {
   const query  = useSelector(selectLastQuery);
   const results = useSelector(s => selectResultsForQuery(s, query || ''));
 
-  if (status === 'loading') return <p>Searching r/art…</p>;
+  if (status === 'loading') return <p>Searching r/art ... </p>;
   if (status === 'failed')  return <p role="alert">Error: {error}</p>;
-  if (!results.length)      return <p>Try a search to see art results.</p>;
+  if (!results.length)      return <p>Try a search to see art results from r/art and find inspiration. Draw your rendition of the art in the canvas area and download a copy to keep or share. Click the images to visit the original post and meme your art in the comments!</p>;
 
   return (
     <div className="gallery">
