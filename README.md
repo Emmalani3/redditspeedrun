@@ -15,6 +15,7 @@ The wire frames were simple and change from full screen to mobile so this site w
 
 *Wireframe for desktop*
 ![Desktop wireframe](./src/assets/wireframe1.jpg)
+
 *Wireframe for mobile*
 ![Mobile wireframe](./src/assets/wireframe2.jpg)
 
@@ -37,10 +38,13 @@ Below the canvas there are pen controls that allow you to change the color of yo
 
 *Example of pen color and weight variation: Image of cat on stary night background*
 ![screenshot of ux with drawing canvas in process of drawing cat on stary night background using pen color and weigh variation](./src/assets/catdrawing.png)
+
 *Example of color layering using blur: Image of color from blue to orange transition*
 ![color testing image from blue to orange](./src/assets/blueorangedrawing.png)
+
 *Example of transparency and color overlay: Image of yellow to blue transition*
 ![color testing transparency from yellow to blue](./src/assets/transparentYtoB.png)
+
 *Example of brush size and opaque overlay: Image of flower using dots and size changes with white background*
 ![flower bundle using color dots](./src/assets/flowerdrawing.png)
 
@@ -49,5 +53,6 @@ After creating your images you can choose how you want to download your image an
 
 *Screenshot of UI with inspiration and drawing*
 ![flower bundle using color dots](./src/assets/floweerscreenshot.png)
+
 *Downloaded file*
 ![flower bundle using color dots](./src/assets/flowerdrawing.png)
