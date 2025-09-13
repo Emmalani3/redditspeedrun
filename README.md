@@ -12,6 +12,7 @@ I used Git and Github for version control and Github Pages to share the app with
 
 ## Wireframe
 The wire frames were simple and change from full screen to mobile so this site works on all screen sizes and is responsive. because we have nested elements one of the most noticable changes is in the gallery. With a long narrow screen the left and right column layout didnt work as well so those elements stack vertically on smaller screens and the gallery loads horizontally.
+
 *Wireframe for desktop*
 ![Desktop wireframe](./src/assets/wireframe1.jpg)
 *Wireframe for mobile*
@@ -27,11 +28,13 @@ The search takes the term you input and finds art from r/art that matches the ca
 
 ### Canvas
 To the right (or bottom on mobile) there is a white canvas for drawing your art. You can use the mouse or trackpad to create images by clicking and draging to create marks. Each mark is saved and can be un-done and re-done.
+
 *Example of blur transparency and line weight*
 ![screenshot of ux with drawing canvas in process of drawing a face using blur, transparency, and line weight variaton](./src/assets/facedrawing.png)
 
 ### Pen Controls
 Below the canvas there are pen controls that allow you to change the color of your brush, the size of a stroke diameter, the transparency of the stroke, and the bluriness of the stroke edge. These give you the ability to draw almost any basic line you would like. With the blur and transparency you can also layer colors and create even color transitions with a little practice. There is also a undo redo and clear in the event you dont like a mark, accidentally deleted a mark you liked, or want to start over completly.
+
 *Example of pen color and weight variation: Image of cat on stary night background*
 ![screenshot of ux with drawing canvas in process of drawing cat on stary night background using pen color and weigh variation](./src/assets/catdrawing.png)
 *Example of color layering using blur: Image of color from blue to orange transition*
